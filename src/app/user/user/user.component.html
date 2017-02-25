@@ -1,0 +1,20 @@
+<md-card *ngIf="user" class="example-card">
+  <md-card-header>
+    <div md-card-avatar class="example-header-image"></div>
+    <md-card-title>{{user.name}}</md-card-title>
+    <md-card-subtitle>{{user.email}}</md-card-subtitle>
+  </md-card-header>
+  <img md-card-image [attr.src]="user.avatar">
+  <md-card-content>
+    <p>
+      {{ user.company.name }}
+    </p>
+    <p><span>Street: </span>{{ user.address.street }}</p>
+    <p><span>City: </span>{{ user.address.city }}</p>
+    <p><span>Zip: </span>{{ user.address.zipcode }}</p>
+  </md-card-content>
+  <md-card-actions>
+    <button (click)="editUser(user.id)" md-button>Edytuj</button>
+    <button (click)="removeUser(user.id)" md-button>Usuń</button>
+  </md-card-actions>
+</md-card>
