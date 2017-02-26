@@ -16,6 +16,7 @@ import { UserEditComponent } from './user/user-edit/user-edit.component';
 import { ContactComponent } from './contact/contact.component';
 import { ReactiveFormsModule } from '@angular/forms';
 import { UserResolve } from './user/user-resolve.service';
+import { ProductComponent } from './product/product.component';
 
 @NgModule({
   declarations: [
@@ -25,7 +26,8 @@ import { UserResolve } from './user/user-resolve.service';
     UserListComponent,
     UserComponent,
     UserEditComponent,
-    ContactComponent
+    ContactComponent,
+    ProductComponent
   ],
   imports: [
     BrowserModule,
