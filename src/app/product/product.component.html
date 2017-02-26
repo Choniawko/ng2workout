@@ -1,0 +1,58 @@
+<h2>Produkt</h2>
+
+<md-card class="container">
+  {{product | json}}
+  <md-card-content>
+    <div>
+    Nazwa: {{ product?.name }}
+  </div>
+  <div>
+  Kategoria: {{ product?.category?.name }} 
+  </div>
+  <div>
+    Opis: {{ product.description }}
+  </div>
+  <button md-button (click)="edit(product)">Edytuj</button>
+  </md-card-content>
+</md-card>
+
+
+<form class="example-form" #productForm="ngForm" (ngSubmit)="onSubmit()">
+
+ <md-input-container class="example-full-width">
+  <div>
+    <label for="name">Nazwa:</label>
+    <input
+       mdInput 
+       [(ngModel)]="product.name" 
+       required 
+       type="text" 
+       name="name"
+       #name="ngModel"
+       >
+
+  </div>
+  <div class="error" *ngIf="!name.valid && name.touched">
+    Pole jest wymagane
+  </div>
+  </md-input-container>
+ <md-input-container class="example-full-width">  
+    <div>
+      <label for="description">Opis:</label>
+      <textarea [(ngModel)]="product.description" mdInput  type="text" name="desciption"></textarea>
+    </div>
+  </md-input-container>
+  <div>
+    <select name="category" id="" [(ngModel)]="product.category" placeholder="Kategoria">
+      <option *ngFor="let category of categories" [value]="category">
+        {{category}}
+      </option>
+    </select>
+
+  </div>
+  <button [disabled]="!productForm.valid" type="submit">Zapisz</button>
+  <button  type="button" (click)="productForm.reset()">Reset</button>
+
+  {{ productForm.value | json}}
+  {{ productForm.valid }}
+</form>
